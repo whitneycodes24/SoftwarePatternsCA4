@@ -8,3 +8,4 @@
 2025-04-09 10:39:22,417 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2025-04-09 10:39:22,420 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\whitn\OneDrive - Technological University Dublin\4TH YEAR\SOFTWARE PATTERNS\softwarePatternsCA4\softwarePatternsCA4\src\test\resources
 2025-04-09 12:05:07,106 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-04-09 12:09:20,081 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
