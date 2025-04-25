@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book List</title>
+</head>
+<body>
+    <h1>All Available Books</h1>
+
+    <div th:each="book : ${books}">
+        <h3 th:text="${book.title}"></h3>
+        <p><strong>Author:</strong> <span th:text="${book.author}"></span></p>
+        <p><strong>Price:</strong> €<span th:text="${book.price}"></span></p>
+        <a th:href="@{/api/books/details/{id}(id=${book.id})}">View Details</a>
+        <hr>
+    </div>
+
+    <a href="/customers/dashboard">← Back to Dashboard</a> |
+    <a href="/cart/view">🛒 View Cart</a>
+</body>
+</html>

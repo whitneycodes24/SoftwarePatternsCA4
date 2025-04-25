@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Profile</title>
+</head>
+<body>
+    <h1>My Profile</h1>
+
+    <p><strong>Username:</strong> <span th:text="${customer.username}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${customer.email}"></span></p>
+    <p><strong>Shipping Address:</strong> <span th:text="${customer.shippingAddress}"></span></p>
+    <p><strong>Payment Method:</strong> <span th:text="${customer.paymentMethod}"></span></p>
+
+    <br>
+
+    <a href="/customers/dashboard">
+        <button>Back to Dashboard</button>
+    </a>
+</body>
+</html>

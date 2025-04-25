@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Details</title>
+</head>
+<body>
+    <h1>Book Details</h1>
+
+    <div>
+        <h2 th:text="${book.title}"></h2>
+        <p><strong>Author:</strong> <span th:text="${book.author}"></span></p>
+        <p><strong>Publisher:</strong> <span th:text="${book.publisher}"></span></p>
+        <p><strong>Category:</strong> <span th:text="${book.category}"></span></p>
+        <p><strong>ISBN:</strong> <span th:text="${book.isbn}"></span></p>
+        <p><strong>Price:</strong> €<span th:text="${book.price}"></span></p>
+
+        <a th:href="@{/reviews/{id}(id=${book.id})}">
+            <button type="button">View Reviews</button>
+        </a>
+    </div>
+
+    <hr>
+
+    <h3>Add to Cart</h3>
+    <form th:action="@{/api/cart/add}" method="post">
+        <input type="hidden" name="bookId" th:value="${book.id}" />
+        <label>Quantity:</label>
+        <input type="number" name="quantity" value="1" min="1" />
+        <button type="submit">Add to Cart</button>
+    </form>
+
+    <hr>
+
+    <h3>Leave a Review</h3>
+    <form th:action="@{/reviews/add}" method="post">
+        <input type="hidden" name="bookId" th:value="${book.id}" />
+        <label for="rating">Rating (1–5):</label>
+        <input type="number" name="rating" min="1" max="5" required /><br><br>
+
+        <label for="comment">Comment:</label><br>
+        <textarea name="comment" rows="4" cols="50" required></textarea><br><br>
+
+        <button type="submit">Submit Review</button>
+    </form>
+
+    <br><br>
+    <a href="/customers/dashboard">← Back to Dashboard</a> |
+    <a href="/cart/view">View Cart</a>
+</body>
+</html>

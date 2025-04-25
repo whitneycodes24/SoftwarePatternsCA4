@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add to Cart</title>
+</head>
+<body>
+    <h1>Add to Cart</h1>
+
+    <form th:action="@{/cart/add}" method="post">
+        <label>Book ID:</label>
+        <input type="number" name="bookId" required><br>
+
+        <label>Quantity:</label>
+        <input type="number" name="quantity" value="1" min="1" required><br>
+
+        <button type="submit">Add to Cart</button>
+    </form>
+
+    <a href="/customers/dashboard">Back to Dashboard</a>
+</body>
+</html>

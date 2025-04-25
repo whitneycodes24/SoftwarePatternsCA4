@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Reviews</title>
+</head>
+<body>
+    <h1>Reviews for <span th:text="${book.title}"></span></h1>
+
+    <div th:if="${#lists.isEmpty(reviews)}">
+        <p>No reviews for this book yet.</p>
+    </div>
+
+    <div th:each="review : ${reviews}">
+        <p><strong>Rating:</strong> <span th:text="${review.rating}"></span>/5</p>
+        <p><em th:text="${review.comment}"></em></p>
+        <hr>
+    </div>
+
+    <a href="/customers/dashboard">← Back to Dashboard</a> |
+    <a th:href="@{/books/details/{id}(id=${book.id})}">← Back to Book</a>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Manage Customers</title>
+</head>
+<body>
+    <h1>Manage Customers</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Shipping Address</th>
+                <th>Payment Method</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.username}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.shippingAddress}"></td>
+                <td th:text="${customer.paymentMethod}"></td>
+                <td th:text="${customer.role}"></td>
+                <td>
+                    <form th:action="@{'/admin/customers/delete/' + ${customer.id}}" method="post" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <a href="/admin/dashboard">
+        <button>Back to Dashboard</button>
+    </a>
+</body>
+</html>

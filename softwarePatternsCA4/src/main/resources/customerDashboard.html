@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to Your Dashboard</h1>
+
+    <a href="/customers/profile">
+        <button>View My Profile</button>
+    </a>
+
+    <h2>Available Books:</h2>
+    <div th:each="book : ${books}">
+        <p><strong>Title:</strong> <span th:text="${book.title}"></span></p>
+        <p><strong>Author:</strong> <span th:text="${book.author}"></span></p>
+        <p><strong>Price:</strong> €<span th:text="${book.price}"></span></p>
+        <a th:href="@{/api/books/details/{id}(id=${book.id})}">View Details</a>
+        <hr>
+    </div>
+    
+<a href="/cart/view">View Cart</a> |
+<a href="/logout">Logout</a>
+    
+
+</body>
+</html>

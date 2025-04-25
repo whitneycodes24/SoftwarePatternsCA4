@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Whitney's Online Bookstore</title>
+</head>
+<body>
+    <h1>Welcome to Whitney's Online Bookstore!</h1>
+    <p>Here you can browse books, add them to your cart for purchase and leave reviews!</p>
+
+    <nav>
+        <ul>
+            <li><a th:href="@{/login}">Login</a></li>
+            <li><a th:href="@{/register}">Sign Up</a></li>
+            <li><a th:href="@{/customers/dashboard}">Customer Dashboard</a></li>
+            <li><a th:href="@{/admin/dashboard}">Admin Dashboard</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
