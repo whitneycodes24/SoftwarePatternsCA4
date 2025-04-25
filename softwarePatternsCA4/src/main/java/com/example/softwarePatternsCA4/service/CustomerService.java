@@ -10,6 +10,7 @@ import com.example.softwarePatternsCA4.repository.CustomerRepository;
 import com.example.softwarePatternsCA4.factory.UserFactory;
 import com.example.softwarePatternsCA4.validations.*;
 
+
 @Service
 public class CustomerService {
 
@@ -29,9 +30,11 @@ public class CustomerService {
         return customerRepository.findById(id);
     }
 
-    public Optional<Customer> getCustomerByUsername(String username) {
-        return customerRepository.findByUsername(username);
+    public Customer getCustomerByUsername(String username) {
+        return customerRepository.findByUsername(username)
+            .orElseThrow(() -> new RuntimeException("Error - Customer not found by username"));
     }
+
 
     public Customer registerCustomer(Customer customerData) {
         CustomerInput input = new CustomerInput(
@@ -42,14 +45,12 @@ public class CustomerService {
             customerData.getPaymentMethod()
         );
 
-        //validation chain using Chain of Responsibility
         Validator validator = new EmailValidator();
         validator.linkWith(new PasswordValidator())
                  .linkWith(new AddressValidator());
 
         validator.validate(input);
 
-        //my factory-based customer creation
         Customer customer = UserFactory.createCustomer(
             input.username,
             passwordEncoder.encode(input.password),
@@ -65,4 +66,11 @@ public class CustomerService {
     public void deleteCustomer(Long id) {
         customerRepository.deleteById(id);
     }
+
+    public String getCustomerEmail(Long customerId) {
+        return customerRepository.findById(customerId)
+                .orElseThrow(() -> new RuntimeException("Customer not found"))
+                .getEmail();
+    }
+
 }
